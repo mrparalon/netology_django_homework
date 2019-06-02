@@ -6,6 +6,7 @@ Intel(R) Xeon(R) CPU E5-2665 0 @ 2.40GHz  2
 MaxCapacity
 301989888
 
+
 > wmic OS get Caption,CSDVersion,OSArchitecture,Version
 Caption                                     CSDVersion      OSArchitecture  Version
 Microsoft® Windows Server® 2008 Datacenter  Service Pack 2  64-bit          6.0.6002
