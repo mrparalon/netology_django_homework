@@ -10,3 +10,5 @@ env/
 
 ### Project specific ###
 settings_local.py
+
+.vscode
