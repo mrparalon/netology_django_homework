@@ -1,3 +1,4 @@
+{% load color_filters %}
 <!DOCTYPE html>{% load static %}
 <html>
   <head>
@@ -17,7 +18,22 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-        
+        <table>
+        <tr>
+          <th>Год</th><th>Январь</th><th>Февраль</th>
+          <th>Март</th><th>Апрель</th><th>Май</th>
+          <th>Июнь</th><th>Июль</th><th>Август</th>
+          <th>Сентябрь</th><th>Октябрь</th><th>Ноябрь</th>
+          <th>Декабрь</th><th>Всего</th>
+        </tr>
+          {% for row in table%}
+            <tr>
+            {% for column, value in row.items %}
+              {{ value|inflation_color:column|safe }}
+            {% endfor %}
+            </tr>
+          {% endfor %}
+        </table>
         <!-- Ваша логика -->
 
         </div>
