@@ -1,3 +1,14 @@
-from django.db import models
+from django.db import models 
 
-# Create your models here.
+
+class Phone(models.Model):
+    name = models.CharField(max_length=128)
+    price = models.DecimalField(decimal_places=2)
+    ddr = models.IntegerField()
+    screen_size = models.DecimalField(max_digits=3, decimal_places=1)
+    ppi = models.IntegerField()
+    system = models.CharField(max_length=128)
+    memory = models.IntegerField()
+    camera_resolution = models.DecimalField(max_digits=3, decimal_places=1)
+    double_camera = models.BooleanField()
+    bluetooth_version = models.DecimalField(max_digits=2, decimal_places=1)
