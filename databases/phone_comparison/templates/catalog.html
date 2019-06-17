@@ -1,11 +1,104 @@
 {% extends "base.html" %}
 {% load static %}
+{% load hyphen %}
 
 {% block title %}Каталог{% endblock %}
 {% block content %}
     <div class="container">
         <div class="header">
             <h1>Сравнение телефонов</h1>
+        </div>
+        <table class="table">
+        <tr>
+            <th>Модель</th>
+            {% for phone in phones %}
+            <th>{{ phone.phone.name }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Бренд</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.brand }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Цена</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.price }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Оперативная память</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.ddr }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Размер экрана</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.screen_size }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>PPI</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.ppi }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>ОС</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.system }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Объем памяти</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.memory }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Разрешение камеры</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.camera_resolution }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Двойная камера</td>
+            {% for phone in phones %}
+                {% if phone.phone.double_camera %}
+                    <td>Да</td>
+                {% else %}
+                    <td>Нет</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Версия Bluetooth</td>
+            {% for phone in phones %}
+            <td>{{ phone.phone.camera_resolution }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Apple ID</td>
+            {% for phone in phones %}
+            <td>{{ phone.apple_id|hyphen }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Face ID</td>
+            {% for phone in phones %}
+            <td>{{ phone.face_id|hyphen }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Стилус</td>
+            {% for phone in phones %}
+            <td>{{ phone.stylus|hyphen }}</td>
+            {% endfor %}
+        </tr>
+        </table>
+        <div>
         </div>
     </div>
 {% endblock %}
