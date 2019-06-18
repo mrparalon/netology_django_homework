@@ -9,12 +9,12 @@
         </div>
 
         <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
+        
         </div>
 
         <div class="content">
             {% for phone in phones %}
-            <h2>{{ phone.name }}</h2>
+            <h2><a href="/catalog/{{ phone.slug }}">{{ phone.name }}</a></h2>
             <p><strong>Стоимость {{ phone.price }}р.</strong></p>
             <img src="{{ phone.image }}">
             {% endfor %}

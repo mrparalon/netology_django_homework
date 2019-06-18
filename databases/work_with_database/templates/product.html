@@ -5,10 +5,22 @@
 {% block content %}
     <div class="container">
         <div class="header">
+        <a href="/catalog">Вернуться в каталог</a>
             <h1>Телефон</h1>
         </div>
         <div class="content">
-
+            <h2>{{ phone.name }}</h2>
+            <p><strong>Стоимость {{ phone.price }}р.</strong></p>
+            <img src="{{ phone.image }}">
+            <p>Дата выпуска: {{ phone.release_date|date:"d/m/Y" }}</p>
+            <p>Наличие LTE: 
+                {% if phone.lte_exists %}
+                Да
+                {% else %}
+                Нет
+                {% endif %}
+            </p>
+            
         </div>
     </div>
 {% endblock %}
