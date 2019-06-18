@@ -4,7 +4,14 @@ from .models import Phone
 
 def show_catalog(request):
     template = 'catalog.html'
+    sort_order = request.GET.get('sort')
+    print(sort_order)
+    sort_orders = {'name': 'name',
+                   'min_price': 'price',
+                   'max_price': '-price'}
     phones = Phone.objects.all()
+    if sort_order in sort_orders:
+        phones = phones.order_by(sort_orders[sort_order])
     context = {'phones': phones}
     return render(request, template, context)
 
