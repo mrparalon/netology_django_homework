@@ -19,9 +19,11 @@
 
         <div class="content">
             {% for phone in phones %}
-            <h2><a href="/catalog/{{ phone.slug }}">{{ phone.name }}</a></h2>
-            <p><strong>Стоимость {{ phone.price }}р.</strong></p>
-            <img src="{{ phone.image }}">
+            <div >
+                <h2><a href="/catalog/{{ phone.slug }}">{{ phone.name }}</a></h2>
+                <p><strong>Стоимость {{ phone.price }}р.</strong></p>
+                <img src="{{ phone.image }}">
+            </div>
             {% endfor %}
             {# Здесь должен отображаться каталог с телефонами #}
         </div>

@@ -8,16 +8,31 @@
             <h1><a href="/books">Каталог</a></h1>
         </div>
         <div class="row">
+        {% if books %}
+        {% for book in books %}
             <div class="book col-md-4">
-                <h2>Сияние</h2>
-                <p>Автор: Стивен Кинг</p>
-                <p>Дата публикации: 2018-09-10</p>
+                <h2>{{ book.name }}</h2>
+                <p>Автор: {{ book.author }}</p>
+                <p>Дата публикации: {{ book.pub_date|date:'Y-m-d' }}</p>
             </div>
-            <div class="book col-md-4">
-                <h2>1984</h2>
-                <p>Автор: Джордж Оруэл</p>
-                <p>Дата публикации: 2015-03-11</p>
+        {% endfor %}
+        {% else %}
+        <h2>Книг за эту дату нет!</h2>
+        {% endif %}
+        </div>
+        <div class="footer">
+        <div class="row">
+            <div class="col-md-2">
+                {% if prev_date %}
+                    <a href="/books/{{ prev_date }}">< {{ prev_date}}</a> 
+                {% endif %}
             </div>
+            <div class="col-md-2">
+                {% if next_date %}
+                    <a href="/books/{{ next_date }}">{{ next_date }} ></a> 
+                {% endif %}
+            </div>
+        </div>
         </div>
     </div>
 {% endblock %}
