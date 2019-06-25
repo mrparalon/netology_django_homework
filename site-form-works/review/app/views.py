@@ -8,7 +8,6 @@ from .forms import ReviewForm
 def product_list_view(request):
     template = 'app/product_list.html'
     products = Product.objects.all()
-
     context = {
         'product_list': products,
     }
@@ -19,15 +18,27 @@ def product_list_view(request):
 def product_view(request, pk):
     template = 'app/product_detail.html'
     product = get_object_or_404(Product, id=pk)
-
+    reviews = Review.objects.filter(product=pk)
     form = ReviewForm
-    if request.method == 'POST':
-        # логика для добавления отзыва
-        pass
-
+    is_review_exist = None
+    request.session.setdefault('reviewed_product', [])
+    reviewed_product = request.session['reviewed_product']
+    if pk not in reviewed_product:
+        if request.method == 'POST':
+            form = form(request.POST) 
+            form.is_valid()
+            form_review_text = form.cleaned_data['text']
+            form_review = Review(text=form_review_text, product=product)
+            form_review.save()
+            reviewed_product.append(pk)
+            request.session['reviewed_product'] = reviewed_product
+            is_review_exist = True
+    else:
+        is_review_exist = True
     context = {
         'form': form,
-        'product': product
+        'product': product,
+        'reviews': reviews,
+        'is_review_exist': is_review_exist
     }
-
     return render(request, template, context)
