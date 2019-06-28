@@ -114,6 +114,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+LOGIN_REDIRECT_URL = '/articles/'
+LOGOUT_REDIRECT_URL = '/articles'
+
 try:
     from .settings_local import *
 except ImportError:

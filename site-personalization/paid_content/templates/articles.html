@@ -9,9 +9,13 @@
             <h1>Список статей</h1>
         </div>
         <div class="articles">
-            <h3>Статья 1</h3>
-            <h3>Статья 2</h3>
-            <h3>Статья 3</h3>
+            {% for article in articles %}
+                <p><a href="/articles/{{ article.id }}">{{ article.title }}</a>
+                    {% if article.is_paid %}
+                    (премиум)
+                    {% else %}
+                    {% endif %}</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

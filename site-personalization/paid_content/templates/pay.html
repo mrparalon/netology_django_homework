@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}PAY{% endblock  %}
+{% block content %}
+<div class="container">
+<h1>Заплати за статьи</h1>
+{% if user.is_premium %}
+    <h3>Вы уже платили!</h3>
+    <a href="/articles">Почитайте статьи</a>
+{% else %}
+<a href="/pay?make_premium=1">Я плачу!</a>
+</div>
+{% endif %}
+{% endblock content %}
