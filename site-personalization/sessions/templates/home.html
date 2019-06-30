@@ -8,5 +8,22 @@
         <div class="header">
             <h1>Игра "Угадай число"</h1>
         </div>
+        <div class="content">
+        {% if is_host %}
+            <h3>Вы создали игру, дождитесь завершения</h3>
+        {% else %}
+        {% if game.is_finished %}
+            <h3>Вы победили, число было <b>{{ game.number }}</b></h3>
+        {% else %}
+            {% if hint %}
+            <p>{{ hint }}</p>
+            {% endif %}
+            <form method="get">
+            <input type="text" name="guess">
+            <button>Угадать</button>
+            </form>
+        {% endif %}
+        {% endif %}
+        </div>
     </div>
 {% endblock %}
