@@ -14,7 +14,9 @@ def show_articles(request):
 
 def show_article(request, id):
     article = Article.objects.get(id=id)
-    user = Profile.objects.get(user=request.user.id)
+    user = None
+    if request.user.is_authenticated:
+        user = Profile.objects.get(user=request.user.id)
     context = {'article': article,
                'user': user}
     return render(
