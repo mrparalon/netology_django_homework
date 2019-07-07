@@ -10,7 +10,7 @@ class Command(BaseCommand):
             reader = csv.DictReader(csv_file, delimiter=';')
             for station in reader:
                 lat = float(station['Latitude_WGS84'])
-                long = float(station['Longitude_WGS84'])
+                long = float(station['Longitude_WGS84']        long_stations = stations.order_by('longitude')
                 routes = station['RouteNumbers'].split('; ')
                 name = station['Name']
                 routes_list = []
