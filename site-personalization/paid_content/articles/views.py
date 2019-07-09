@@ -17,6 +17,8 @@ def show_article(request, id):
     user = None
     if request.user.is_authenticated:
         user = Profile.objects.get(user=request.user.id)
+        if article.is_paid and not user.is_premium:
+            article = None
     context = {'article': article,
                'user': user}
     return render(

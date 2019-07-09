@@ -9,14 +9,10 @@
             <h3>{{ article.title }}</h3>
         </div>
         <div class="text">
-        {% if article.is_paid %}
-            {% if user.is_premium %}
-                {{ article.text|linebreaks }}
-            {% else %}
-                <p>Эта статья Платная, <a href="/pay/">заплати </a> и смотри!</p>
-            {% endif %}
-        {% else %}
+        {% if article %}
             {{ article.text|linebreaks }}
+        {% else %}
+                <p>Эта статья Платная, <a href="/pay/">заплати </a> и смотри!</p>
         {% endif %}
         </div>
     </div>
